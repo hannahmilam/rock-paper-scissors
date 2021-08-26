@@ -19,21 +19,40 @@
   <link rel="stylesheet" href="assets/styles/style.css">
 
 </head>
+<style>
+  /* This is for wire framing to see our rows/columns */
+  body.debug .container,
+  body.debug .container-fluid {
+    outline: 2px double blue;
+    outline-offset: -2px;
+  }
 
-<body class="bg-img custom-text">
+  body.debug .row {
+    outline: 2px dashed red;
+    outline-offset: -2px;
+  }
+
+  body.debug [class*="col-"] {
+    outline: 2px dotted forestgreen;
+    outline-offset: -3px;
+  }
+</style>
+
+<body class="bg-img custom-text debug">
   <header>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <h1 class="text-center py-3">ROCK, PAPER, SCISSORS!</h1>
+      <div class="row py-5">
+        <div class="col-12 py-3">
+          <h1 class="text-center">ROCK, PAPER, SCISSORS!</h1>
         </div>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- player name *** TODO store to local storage -->
     <div class="container-fluid">
-      <div class="row py-3">
+      <div class="row py-lg-3">
         <div class="col-lg-6 offset-3 text-center">
           <form id="player-form" onsubmit="setPlayer(event)">
             <h3>Player Name:</h3>
@@ -43,41 +62,49 @@
         </div>
       </div>
 
+      <!-- OUTCOME TODO Create ScoreBoard here -->
       <div class="row">
-        <div class="col-lg-6 offset-3 text-center custom-shadow py-3 mt-3">
+        <div class="col-lg-6 offset-3 text-center custom-shadow py-3">
           <h1 class="py-3" id="outcome"></h1>
         </div>
       </div>
 
+      <!-- Player Choice TODO need to update icon -->
       <div class="row">
-        <div class="col-lg-6 offset-3 mt-3">
+        <div class="col-lg-4 offset-2 py-3">
           <div class="card text-center py-3">
-            <h1>CP Choice:</h1>
+            <h5>YOUR SELECTION:</h5>
+            <h1 id="playerSelection"></h1>
+          </div>
+        </div>
+        <!-- Computer Choice TODO need to update icon -->
+        <div class="col-lg-4 py-3">
+          <div class="card text-center py-3">
+            <h5>COMPUTER SELECTION:</h5>
             <h1 id="compChoice"></h1>
           </div>
         </div>
       </div>
 
       <div class="row py-3">
-        <div class="col-lg-4 text-center">
-          <button onclick="play('rock')" id="rock" class="rock-paper-scissors">
-            <h1>ROCK <i class="far fa-hand-rock"></i></h1>
+        <div class="col-lg-5 text-end">
+          <button onclick="play('rock')" id="rock" class="rock-paper-scissors pt-2">
+            <h5>ROCK <i class="far fa-hand-rock"></i></h5>
           </button>
         </div>
-        <div class="col-lg-4 text-center">
-          <button onclick="play('paper')" id="paper" class="rock-paper-scissors">
-            <h1>PAPER <i class="far fa-hand-paper"></i></h1>
+        <div class="col-lg-2 text-center">
+          <button onclick="play('paper')" id="paper" class="rock-paper-scissors pt-2">
+            <h5>PAPER <i class="far fa-hand-paper"></i></h5>
           </button>
         </div>
-        <div class="col-lg-4 text-center">
-          <button onclick="play('scissors')" id="scissors" class="rock-paper-scissors">
-            <h1>SCISSORS <i class="far fa-hand-scissors"></i></h1>
+        <div class="col-lg-5 text-start">
+          <button onclick="play('scissors')" id="scissors" class="rock-paper-scissors pt-2">
+            <h5>SCISSORS <i class="far fa-hand-scissors"></i></h5>
           </button>
         </div>
       </div>
 
     </div>
-
   </main>
 
 
